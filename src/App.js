@@ -1,23 +1,13 @@
-import logo from './logo.svg';
+import Chat from './Chat';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>HelpFul</h1>
+      <p>Leave behind helpful advice for strangers</p>
+
+      <Chat />
     </div>
   );
 }
