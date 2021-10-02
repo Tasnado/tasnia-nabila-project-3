@@ -1,28 +1,38 @@
 import { useState } from "react";
+import { ref, push } from 'firebase/database';
+import realtime from './firebase';
+import './App.css';
 
 const Chat = () => {
-    const [message, setMessage] = useState("");
+    const [message, setMessage] = useState();
 
-    const handleClick = (e) => {
-        e.preventDefault();
-        if (message.trim()) {
-            console.log( message );
-        }
-        setMessage("");
+    const handleChange = (event) => {
+        setMessage(event.target.value);
     }
-    
-    return(
-        <div>
-            <form onSubmit={ handleClick }>
-                <label>
-                    Message:
-                    <input 
-                        type="text" 
-                        name="message"
-                        value={ message }
-                        onChange={e => setMessage(e.target.value)}
-                    />
-                </label>
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        
+        if (message.trim()) {
+            const dbRef = ref(realtime);
+            const messageObject = { text: message }
+            push(dbRef, messageObject);
+
+            setMessage("");
+        }
+    }
+
+    return (
+        <div className="Chat">
+            <form onSubmit={handleSubmit}>
+                <label></label>
+                <input
+                    type="text"
+                    name="message"
+                    value={message}
+                    placeholder="Say something nice"
+                    onChange={handleChange}
+                />
                 <button type="submit">Send</button>
             </form>
         </div>
