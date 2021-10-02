@@ -12,13 +12,12 @@ const Chat = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        if (userInput.trim()) {
+        if (userInput && userInput.trim()) {
             const dbRef = ref(realtime);
             const userInputObject = { text: userInput }
             push(dbRef, userInputObject);
-
-            setUserInput("");
         }
+        setUserInput("");
     }
 
     return (
