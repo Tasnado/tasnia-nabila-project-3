@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { ref, onValue } from 'firebase/database';
 import realtime from './firebase';
+import Chat from './Chat'
 
 const Messages = () => {
 
@@ -31,15 +32,20 @@ const Messages = () => {
 
 
     return (
-        <div className="messages">
-            {
-                messages.map((individualMessage) => {
-                    return (
-                        <p key={individualMessage.key}>{individualMessage.text}</p>
-                    )
-                })
-            }
-            <span ref={scrollTo}></span>
+        <div className="wrapper">
+
+            <div className="messages">
+                {
+                    messages.map((individualMessage) => {
+                        return (
+                            <p key={individualMessage.key}>{individualMessage.text}</p>
+                        )
+                    })
+                }
+                <span ref={scrollTo}></span>
+            </div>
+
+            <Chat />
         </div>
     )
 }
