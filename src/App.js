@@ -1,16 +1,25 @@
 import Messages from './Messages';
 // import Chat from './Chat'
 import SignOut from './SignOut';
-import { getAuth } from "firebase/auth";
-// import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { useState } from 'react';
+// import { getAuth } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 import SignIn from './SignIn';
 import './App.css';
 
 function App() {
   const auth = getAuth();
+  const [signedIn, setSignedIn] = useState(false);
 
-  const user = auth.currentUser;
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      setSignedIn(true)
+    } else {
+      setSignedIn(false)
+    }
+  });
+
 
   return (
     <div className="App">
@@ -21,7 +30,7 @@ function App() {
           <h1>This is a heading</h1>
           <p>I am a header</p>
 
-          { user ? <SignOut /> : <SignIn /> }
+          { signedIn ? <SignOut /> : <SignIn /> }
 
         </div>
       </header>
@@ -29,7 +38,7 @@ function App() {
 
 
       <main>
-        {user ? <Messages /> : <p className="signInMessage">Please Sign in</p> }
+        { signedIn ? <Messages /> : <p className="signInMessage">Please Sign in</p> }
       </main>
 
       <footer>
