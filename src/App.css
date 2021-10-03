@@ -63,6 +63,12 @@ header button:hover {
   border: 2px solid #434E74;
 }
 
+.signInMessage {
+  color: #434E74;
+  padding: 42vh 0;
+  text-align: center;
+}
+
 form,
 .messages p {
   background-color: #434E74;
