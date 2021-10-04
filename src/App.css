@@ -6,16 +6,48 @@ html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}bo
 
 .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; border: 0; padding: 0; white-space: nowrap; clip-path: inset(100%); clip: rect(0 0 0 0); overflow: hidden;}
 
+@import url('https://fonts.googleapis.com/css2?family=Bad+Script&family=IBM+Plex+Sans+Thai+Looped&display=swap');
+
 /* animation start  */
-@keyframes test {
+@keyframes chatAnimation {
   0%   
     {transform: translateX(50%);}
   100% 
     {transform: translateX(0);}
 }
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: black }
+}
+
+
+
+@keyframes fadein{
+  0% { opacity:0; }
+  66% { opacity:0; }
+  100% { opacity:1; }
+}
+
+@-webkit-keyframes fadein{
+  0% { opacity:0; }
+  66% { opacity:0; }
+  80% { opacity:0.5; }
+  100% { opacity:1; }
+}
 /* animation stop  */
 
-p, button, h1 {
+
+
+
+p, button, h1, nav, ul, li {
   margin: 0;
   padding: 0;
 }
@@ -23,6 +55,7 @@ p, button, h1 {
 html {
   font-size: 125%;
   color: white;
+  font-family: 'IBM Plex Sans Thai Looped', sans-serif;
 }
 
 .wrapper {
@@ -34,11 +67,36 @@ button {
   cursor: pointer;
 }
 
+/***********************************************************************/
+/* Header Start */
+/***********************************************************************/
+
 header {
   height: 100vh;
-  background: url("./assets/backgroundImage.jpg") center;
   background-size: cover;
-  padding-top: 20vh;
+  display: flex;
+  align-items: center;
+}
+
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -100;
+}
+
+header.blueButtonClicked {
+  background: none;
+  background-color: whitesmoke;
+}
+
+.headingError {
+  font-size: 5rem;
+}
+.notFoundError {
+  font-size: 2rem;
 }
 
 header .wrapper {
@@ -46,21 +104,48 @@ header .wrapper {
   height: 55vh;
   color: #232838;
   opacity: 0.9;
-  padding: 10vh 5% 0 5%;
+  padding: 5vh 2%;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
+
+.heading {
+  overflow: hidden;
+  white-space: nowrap;
+  text-transform: uppercase;
+  font-size: 2rem;
+  margin: 0 auto;
+  animation: 
+    typing 3.0s steps(40, end),
+    blink-caret .75s step-end;
+}
+
+.instructionPara {
+  display: inline-block;
+  font-size: 1.2rem;
+  line-height: 1.4rem;
+  -webkit-animation: 4s ease 0s normal forwards 1 fadein;
+  animation: 4s ease 0s normal forwards 1 fadein;
+}
+
+.headerButtons {
+  -webkit-animation: 8s ease 0s normal forwards 1 fadein;
+  animation: 8s ease 0s normal forwards 1 fadein;
+}
+
 
 h1, header p {
   display: block;
 }
 
+
 header p {
-  margin-top: 5%;
   font-size: 1rem;
 }
 
 .headerButtons {
-  margin-top: 10%;
   width: 100%;
   display: flex;
   justify-content: space-evenly;
@@ -70,9 +155,10 @@ header p {
   background-color: #434E74;
   color: white;
   font-size: 1.1rem;
-  width: 48%;
+  width: 40%;
   border: none;
   padding: 20px 0;
+  border-radius: 45%;
 }
 
 .headerButtons button:hover {
@@ -86,7 +172,7 @@ header p {
 }
 
 .headerButtons .redButton:hover {
-  color: rgb(202, 12, 12);
+  background-color: rgb(129, 6, 6);
 }
 
 .headerButtons .blueButton {
@@ -95,48 +181,79 @@ header p {
 }
 
 .headerButtons .blueButton:hover {
-  color: rgb(0, 0, 194);
+  background-color: rgb(5, 5, 128);
 }
 
-form {
-  background-color: #434E74;
-}
+
+/***********************************************************************/
+/* Messages */
+/***********************************************************************/
 
 header, main {
   text-align: center;
 }
 
 main {
-  background: rgb(174,143,177);
-  background: linear-gradient(180deg, rgba(174,143,177,1) 6%, rgba(230,221,238,1) 27%, rgba(190,223,255,1) 55%, rgba(136,155,211,1) 74%, rgba(67,78,116,1) 100%);
-  /* background: rgb(67,78,116);
-  background: linear-gradient(180deg, rgba(67,78,116,1) 4%, rgba(136,155,211,1) 16%, rgba(190,223,255,1) 45%, rgba(230,221,238,1) 75%, rgba(174,143,177,1) 95%); */
+  background: rgb(13,2,8);
+  background: radial-gradient(circle, rgba(13,2,8,1) 68%, rgb(1, 27, 1) 100%); 
+  height: 96.5vh;
 }
 
 main .wrapper {
-  border: 1px solid #959096;
+  border: 1px solid #0D0208;
+}
+
+nav {
+  height: 10vh;
+  background-color: #003B00;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 20px;
+}
+
+nav p {
+  font-size: 1.2rem;
+}
+
+ul, li {
+  height: 100%;
+}
+
+li {
+  background: #008F11;
+  border: 1px solid #003B00;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+
+li:hover {
+  background: #E6DDEE;
+  color: #003B00;
 }
 
 .messages {
   height: 75vh;
-  background: rgb(227,239,246);
-  background: radial-gradient(circle, rgba(227,239,246,1) 7%, rgba(209,220,252,1) 95%);
+  background: rgb(238,233,233);
+  background: radial-gradient(circle, rgba(238,233,233,1) 0%, rgba(117,173,117,1) 100%); 
   overflow-y: scroll;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
-  scrollbar-color: #434E74 #ae8fb1;
+  scrollbar-color: #003B00 #008F11;
 }
 
 .messages::-webkit-scrollbar {
   width: 15px;
 }
 .messages::-webkit-scrollbar-track {
-  background: #ae8fb1;
+  background: #008F11;
 }
 .messages::-webkit-scrollbar-thumb {
-  background-color: #434E74;
+  background-color: #003B00;
 }
 
 .theMessage {
@@ -148,7 +265,7 @@ main .wrapper {
 
 .messages p,
 .messages img {
-  animation-name: test;
+  animation-name: chatAnimation;
   animation-duration: 0.5s;
 } 
 
@@ -172,7 +289,7 @@ main .wrapper {
 }
 
 .sent {
-  background-color: #434E74;
+  background-color: #022a02;
 }
 
 .sent:after {
@@ -183,7 +300,7 @@ main .wrapper {
 	width: 0;
   height: 0;
   border: 20px solid transparent;
-  border-left-color: #434E74;
+  border-left-color: #003B00;
   border-right: 0;
 	border-top: 0;
 	margin-top: -6px;
@@ -191,7 +308,7 @@ main .wrapper {
 }
 
 .received {
-  background-color: #ae8fb1;
+  background-color: #157720;
   position: relative;
 }
 
@@ -203,7 +320,7 @@ main .wrapper {
 	width: 0;
 	height: 0;
 	border: 20px solid transparent;
-	border-right-color: #ae8fb1;
+	border-right-color: #008F11;
 	border-left: 0;
 	border-bottom: 0;
 	margin-top: -15px;
@@ -216,6 +333,10 @@ img {
   height: 55px;
 }
 
+/***********************************************************************/
+/* Form Start */
+/***********************************************************************/
+
 form {
   display: flex;
   height: 10vh;
@@ -224,7 +345,7 @@ form {
 
 input, 
 form button {
-  font-size: 1rem;
+  font-size: 1.1rem;
   height: 100%;
   width: 80%;
   border: none;
@@ -232,25 +353,45 @@ form button {
 }
 
 input {
-  background-color: #434E74;
+  background-color: #003B00;
   color: white;
 }
 
 form button {
-  background-color: #BEDFFF;
-  border-top: 1px solid #434E74;
-  color: #434E74;
+  background-color: #008F11;
+  border-top: 1px solid #003B00;
+  color: white;
   width: 20%;
   min-width: 65px;
-  font-size: 1rem;
 }
 
 form button:hover {
+  color: #003B00;
   background-color: #E6DDEE;
 }
 
 footer {
-  background-color: #232838;
+  background-color: #0D0208;
   padding: 5px 0;
   text-align: center;
+}
+
+
+
+/***********************************************************************/
+/* Responsive Start */
+/***********************************************************************/
+@media (max-height: 580px) {
+  header .wrapper {
+    height: 90vh;
+  }
+}
+
+@media (max-width: 470px) {
+  .heading {
+    font-size: 1.3rem;
+  }
+  .instructionPara {
+    font-size: 1.1rem;
+  }
 }

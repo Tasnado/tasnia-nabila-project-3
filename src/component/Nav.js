@@ -1,8 +1,7 @@
 import { getAuth, signOut } from "firebase/auth";
 
-const SignOut = () => {
+const Nav = () => {
     const auth = getAuth();
-
     const signingOut = () => {
         signOut(auth)
             // .then(() => {
@@ -14,9 +13,17 @@ const SignOut = () => {
             // });
     }
 
-    return auth.currentUser && (
-        <button onClick={ signingOut }>Sign Out</button>
+    
+    return(
+        <nav>
+            <p>Welcome, {auth.currentUser.displayName}</p>
+            <ul>
+                <li onClick={ signingOut }>
+                    <p>LogOut</p>
+                </li>
+            </ul>
+        </nav>
     )
 }
 
-export default SignOut;
+export default Nav;

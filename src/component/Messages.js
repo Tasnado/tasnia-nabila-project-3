@@ -1,5 +1,7 @@
 import realtime from '../firebase';
 import Chat from './Chat'
+import Nav from './Nav';
+
 import { useState, useEffect, useRef } from "react";
 import { ref, onValue } from 'firebase/database';
 import { getAuth } from "firebase/auth";
@@ -9,10 +11,10 @@ const Messages = () => {
     const scrollTo = useRef();
     const auth = getAuth();
     const { uid } = auth.currentUser;
-    
+
     useEffect(() => {
         const dbRef = ref(realtime);
-        
+
         onValue(dbRef, (snapshot) => {
             const myData = snapshot.val();
             const newArray = [];
@@ -35,24 +37,27 @@ const Messages = () => {
     }, [messages]);
 
     return (
-        <div className="wrapper">
+        <>
+            <div className="wrapper">
+            <Nav />
 
-            <div className="messages">
-                {
-                    messages.map((individualMessage) => {
-                        return (
-                            <div key={individualMessage.key} className={ uid === individualMessage.uid ? 'theMessage messageSent' : 'theMessage messageReceived' }>
-                                <img  src={ individualMessage.photoURL } alt="google profile" />
-                                <p className={ uid === individualMessage.uid ? "sent" : "received" }>{individualMessage.text}</p>
-                            </div>
-                        )
-                    })
-                }
-                <span ref={scrollTo}></span>
+                <div className="messages">
+                    {
+                        messages.map((individualMessage) => {
+                            return (
+                                <div key={individualMessage.key} className={ uid === individualMessage.uid ? 'theMessage messageSent' : 'theMessage messageReceived' }>
+                                    <img  src={ individualMessage.photoURL } alt="google profile" />
+                                    <p className={ uid === individualMessage.uid ? "sent" : "received" }>{individualMessage.text}</p>
+                                </div>
+                            )
+                        })
+                    }
+                    <span ref={scrollTo}></span>
+                </div>
+
+                <Chat />
             </div>
-
-            <Chat />
-        </div>
+        </>
     )
 }
 
