@@ -5,15 +5,11 @@ import { ref, push } from 'firebase/database';
 import { getAuth } from "firebase/auth";
 import Music from './Music';
 
-// import happyBellsBotification from '../audio/happyBellsBotification.wav'
-// import messagePopAlert from '../audio/messagePopAlert.mp3'
-// import positiveNotification from '../audio/positiveNotification.wav'
-// import correctAnswerReward from '../audio/correctAnswerReward.wav';
 
 const Chat = () => {
     const [userInput, setUserInput] = useState();
     const auth = getAuth();
-    const user = auth.currentUser;
+    const { uid, photoURL } = auth.currentUser;
 
     const handleChange = (event) => {
         setUserInput(event.target.value);
@@ -26,23 +22,14 @@ const Chat = () => {
             const dbRef = ref(realtime);
             const userInputObject = { 
                 text: userInput,
-                uid: user.uid,
-                profileImg: user.photoURL
+                uid,
+                photoURL
             }
             push(dbRef, userInputObject);
 
             const userText = userInput.toLowerCase()
             
             Music(userText);
-            // if (userText === "juno") {
-            //     playSound(happyBellsBotification);
-            // } else if (userText === "cohort 36" || userText === "cohort36") {
-            //     playSound(positiveNotification);
-            // } else if (userText === "buff skeleton" || userText === "buffskeleton") {
-            //     playSound(correctAnswerReward);
-            // } else {
-            //     playSound(messagePopAlert);
-            // }
         }
         setUserInput("");
     }

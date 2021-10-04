@@ -1,10 +1,11 @@
 import Messages from './component/Messages';
-import SignOut from './component/SignOut';
-import SignIn from './component/SignIn';
+// import SignOut from './component/SignOut';
+// import SignIn from './component/SignIn';
 import { useState } from 'react';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 import './App.css';
+import Header from './component/Header';
 
 function App() {
   const auth = getAuth();
@@ -13,7 +14,6 @@ function App() {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       setSignedIn(true)
-      // console.log(user.photoURL)
     } else {
       setSignedIn(false)
     }
@@ -23,25 +23,26 @@ function App() {
   return (
     <div className="App">
 
+      <Header />
 
-      <header>
+      {/* <header>
         <div className="wrapper">
-          <h1>This is a heading</h1>
-          <p>I am a header</p>
+          <h1>Welcome, stranger.</h1>
+          <p>This your last chance. After this there is no turning back. You click the blue button, the story ends. You go back to talking with whoever you were talking to. You click the red button, you open yourself to a world of new people.</p>
 
           { signedIn ? <SignOut /> : <SignIn /> }
 
         </div>
-      </header>
+      </header> */}
 
 
 
       <main>
-        { signedIn ? <Messages /> : <p className="signInMessage">Please Sign in to see chat room</p> }
+        { signedIn ? <Messages /> : "" }
       </main>
 
       <footer>
-        <p>Made by Tasnia Nabila :(</p>
+        <p>Made by Tasnia Nabila :)</p>
       </footer>
 
     </div>

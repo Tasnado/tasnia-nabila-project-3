@@ -8,11 +8,11 @@ const Messages = () => {
     const [messages, setMessages] = useState([]);
     const scrollTo = useRef();
     const auth = getAuth();
-    const user = auth.currentUser;
-
+    const { uid } = auth.currentUser;
+    
     useEffect(() => {
         const dbRef = ref(realtime);
-
+        
         onValue(dbRef, (snapshot) => {
             const myData = snapshot.val();
             const newArray = [];
@@ -22,7 +22,7 @@ const Messages = () => {
                     key: propertyName,
                     text: myData[propertyName].text,
                     uid: myData[propertyName].uid,
-                    profileImg: user.photoURL
+                    photoURL: myData[propertyName].photoURL
                 }
                 newArray.push(messagesObject);
             }
@@ -34,7 +34,6 @@ const Messages = () => {
         scrollTo.current.scrollIntoView({ behavior: 'smooth' });
     }, [messages]);
 
-
     return (
         <div className="wrapper">
 
@@ -42,9 +41,9 @@ const Messages = () => {
                 {
                     messages.map((individualMessage) => {
                         return (
-                            <div className={ user.uid === individualMessage.uid ? 'theMessage messageSent' : 'theMessage messageReceived' }>
-                                <img src={ individualMessage.profileImg } alt="profile picture" />
-                                <p className={ user.uid === individualMessage.uid ? "sent" : "received" }  key={individualMessage.key}>{individualMessage.text}</p>
+                            <div key={individualMessage.key} className={ uid === individualMessage.uid ? 'theMessage messageSent' : 'theMessage messageReceived' }>
+                                <img  src={ individualMessage.photoURL } alt="google profile" />
+                                <p className={ uid === individualMessage.uid ? "sent" : "received" }>{individualMessage.text}</p>
                             </div>
                         )
                     })
