@@ -1,9 +1,9 @@
-import Messages from './Messages';
-import SignOut from './SignOut';
+import Messages from './component/Messages';
+import SignOut from './component/SignOut';
+import SignIn from './component/SignIn';
 import { useState } from 'react';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
-import SignIn from './SignIn';
 import './App.css';
 
 function App() {
@@ -13,6 +13,7 @@ function App() {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       setSignedIn(true)
+      // console.log(user.photoURL)
     } else {
       setSignedIn(false)
     }
