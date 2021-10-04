@@ -28,10 +28,6 @@ function App() {
         </main>
       }
 
-
-
-
-
       <footer>
         <p>Made by Tasnia Nabila :)</p>
       </footer>
