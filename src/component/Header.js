@@ -1,6 +1,6 @@
 import backgroundVideo from '../assets/backgroundVideo.mp4'
 import { useState } from 'react';
-import { getAuth, onAuthStateChanged, signInWithRedirect, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, onAuthStateChanged, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 const Header = () => {
     const auth = getAuth();
@@ -19,7 +19,7 @@ const Header = () => {
 
     const signInWithGoogle = () => {
         const provider = new GoogleAuthProvider();
-        signInWithRedirect(auth, provider)
+        signInWithPopup(auth, provider)
     }
 
     const clickedBlueButton = () => {
