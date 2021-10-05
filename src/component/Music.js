@@ -16,7 +16,7 @@ const Music = (userText) => {
         playSound(positiveNotification);
     } else if (userText.includes("buff skeleton") || userText.includes("buffskeleton")) {
         playSound(correctAnswerReward);
-    } else if (userText == "lol" || userText == "lmao" || userText == "rofl") {
+    } else if (userText === "lol" || userText === "lmao" || userText === "rofl") {
         playSound(crowdLaugh);
     } else {
         playSound(messagePopAlert);
