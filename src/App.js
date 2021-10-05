@@ -29,7 +29,7 @@ function App() {
       }
 
       <footer>
-        <p>Made by Tasnia Nabila :)</p>
+        <p>Made by Tasnia Nabila. Sound from mixkit</p>
       </footer>
 
     </div>

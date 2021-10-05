@@ -12,7 +12,7 @@ const Nav = () => {
             <p>Welcome, {auth.currentUser.displayName}</p>
             <ul>
                 <li onClick={ signingOut }>
-                    <p>LogOut</p>
+                    <p>Logout</p>
                 </li>
             </ul>
         </nav>

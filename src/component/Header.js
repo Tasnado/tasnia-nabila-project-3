@@ -1,6 +1,8 @@
 import backgroundVideo from '../assets/backgroundVideo.mp4'
 import { useState } from 'react';
 import { getAuth, onAuthStateChanged, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import redButtonSound from '../audio/redButtonSound.wav';
+import blueButtonSound from '../audio/blueButtonSound.wav';
 
 const Header = () => {
     const auth = getAuth();
@@ -20,12 +22,19 @@ const Header = () => {
     const signInWithGoogle = () => {
         const provider = new GoogleAuthProvider();
         signInWithPopup(auth, provider)
+        buttonSoundClick(redButtonSound);
     }
 
     const clickedBlueButton = () => {
         setBluePill(true);
         setHeading("404");
         setInstruction("The resource requested could not be found on this server");
+        buttonSoundClick(blueButtonSound);
+    }
+
+    const buttonSoundClick = (url) => {
+        const audio = new Audio(url);
+        audio.play();
     }
 
 
@@ -37,7 +46,7 @@ const Header = () => {
 
             <div className="wrapper">
                 <h1 className={bluePill ? "headingError" : "heading"}>{heading}</h1>
-                {bluePill ? <p className="notFoundError">Not Found</p> : null}
+                {bluePill ? <p className="notFoundError">You choose blue</p> : null}
                 <p className={bluePill ? null : "instructionPara"}>{instruction}</p>
 
                 {!bluePill ?
