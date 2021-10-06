@@ -64,7 +64,13 @@ const Chat = () => {
                         onMouseLeave={ () => setEmojiHover(faSmile) }
                     />
                     { chosenEmoji && <Picker
-                        onEmojiClick={onEmojiClick} />}
+                        onEmojiClick={onEmojiClick} 
+                        pickerStyle={
+                            {position: 'absolute', 
+                            bottom: '10vh', 
+                            width: '100%'}
+                        }
+                    />}
                 </div>
                 <button type="submit"><FontAwesomeIcon icon={faPaperPlane} /></button>
             </form>

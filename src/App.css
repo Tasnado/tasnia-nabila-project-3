@@ -375,11 +375,11 @@ form button {
   color: #ff0;
 }
 
-aside.emoji-picker-react {
+/* aside.emoji-picker-react {
   position: absolute;
   bottom: 10vh;
   width: 100%;
-}
+} */
 
 .emoji-picker-react .emoji-categories {
   flex-wrap: wrap;

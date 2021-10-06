@@ -1,9 +1,9 @@
+import './App.css';
 import Messages from './component/Messages';
 import Header from './component/Header';
 import { useState } from 'react';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
-import './App.css';
 
 function App() {
   const auth = getAuth();
@@ -29,7 +29,7 @@ function App() {
       }
 
       <footer>
-        <p>Made by Tasnia Nabila. Sounds from mixkit</p>
+        <p>Made by Tasnia Nabila at Juno. Sounds from mixkit</p>
       </footer>
 
     </div>
