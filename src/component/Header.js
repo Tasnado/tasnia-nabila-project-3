@@ -9,7 +9,7 @@ const Header = () => {
     const [signedIn, setSignedIn] = useState(false);
     const [bluePill, setBluePill] = useState(false);
     const [heading, setHeading] = useState("Welcome, stranger.")
-    const [instruction, setInstruction] = useState("You found the secret chat room. There is no turning back. You click the blue button, the story ends. You click the red button, you open yourself to a world of new people.")
+    const [instruction, setInstruction] = useState("It seems you found our secret chat room. There is no turning back. You click the blue button, the story ends. You click the red button, you open yourself to a world of new people.")
 
     onAuthStateChanged(auth, (user) => {
         if (user) {
@@ -22,12 +22,17 @@ const Header = () => {
     const signInWithGoogle = () => {
         const provider = new GoogleAuthProvider();
         signInWithPopup(auth, provider)
-        buttonSoundClick(redButtonSound);
+            .then((result) => {
+                console.log(result);
+                buttonSoundClick(redButtonSound);
+            }).catch((error) => {
+                console.log(error);
+            })
     }
 
     const clickedBlueButton = () => {
         setBluePill(true);
-        setHeading("404");
+        setHeading("404 BLUE");
         setInstruction("The resource requested could not be found on this server");
         buttonSoundClick(blueButtonSound);
     }
@@ -40,13 +45,14 @@ const Header = () => {
 
     return (
         <header className={bluePill ? "blueButtonClicked" : null}>
+            
             <video autoPlay loop muted id="myVideo">
                 <source src={backgroundVideo} type="video/mp4" />
             </video>
 
             <div className="wrapper">
                 <h1 className={bluePill ? "headingError" : "heading"}>{heading}</h1>
-                {bluePill ? <p className="notFoundError">You choose blue</p> : null}
+                {bluePill ? <p className="notFoundError">You made your choice</p> : null}
                 <p className={bluePill ? null : "instructionPara"}>{instruction}</p>
 
                 {!bluePill ?

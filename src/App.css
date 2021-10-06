@@ -70,7 +70,6 @@ button {
 /***********************************************************************/
 /* Header Start */
 /***********************************************************************/
-
 header {
   height: 100vh;
   background-size: cover;
@@ -135,11 +134,9 @@ header .wrapper {
   animation: 8s ease 0s normal forwards 1 fadein;
 }
 
-
-h1, header p {
-  display: block;
+.notFoundError {
+  color: blue;
 }
-
 
 header p {
   font-size: 1rem;
@@ -152,8 +149,6 @@ header p {
 }
 
 .headerButtons button {
-  background-color: #434E74;
-  color: white;
   font-size: 1.1rem;
   width: 40%;
   border: none;
@@ -162,13 +157,13 @@ header p {
 }
 
 .headerButtons button:hover {
-  background-color: green;
-  border: none;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 }
 
 .headerButtons .redButton {
   background-color: rgb(202, 12, 12);
   color: white;
+  box-shadow: rgba(129, 6, 6, 0.3) 0px 19px 38px, rgba(129, 6, 6, 0.22) 0px 15px 12px;
 }
 
 .headerButtons .redButton:hover {
@@ -178,6 +173,7 @@ header p {
 .headerButtons .blueButton {
   background-color: rgb(0, 0, 194);
   color: white;
+  box-shadow: rgba(5, 5, 128, 0.3) 0px 19px 38px, rgba(5, 5, 128, 0.22) 0px 15px 12px;
 }
 
 .headerButtons .blueButton:hover {
@@ -203,7 +199,7 @@ main .wrapper {
   border: 1px solid #0D0208;
 }
 
-nav {
+.navigation {
   height: 10vh;
   background-color: #003B00;
   display: flex;
@@ -212,15 +208,15 @@ nav {
   padding-left: 20px;
 }
 
-nav p {
+.navigation p {
   font-size: 1.2rem;
 }
 
-ul, li {
+.navigation ul, .navigation li {
   height: 100%;
 }
 
-li {
+.navigation li {
   background: #008F11;
   border: 1px solid #003B00;
   list-style: none;
@@ -230,7 +226,7 @@ li {
   cursor: pointer;
 }
 
-li:hover {
+.navigation li:hover {
   background: #E6DDEE;
   color: #003B00;
 }
@@ -342,21 +338,55 @@ form {
   display: flex;
   height: 10vh;
   max-width: 600px;
+  position: relative;
 }
 
-input, 
+.userInput, 
 form button {
-  font-size: 1.1rem;
   height: 100%;
-  width: 80%;
   border: none;
   padding: 5px 10px;
 }
 
-input {
+.userInput {
   background-color: #003B00;
   color: white;
+  width: calc(100% - 40px);
+  font-size: 1.1rem;
 }
+
+/**************Emoji Start  *******************/
+
+.inputAndEmoji {
+  width: 80%;
+  display: flex;
+  padding-right: 5px;
+  background-color: #003B00;
+}
+
+.svg-inline--fa.fa-smile,
+.svg-inline--fa.fa-grin-beam {
+  color: white;
+  height: 10vh;
+  width: 30px;
+  cursor: pointer;
+}
+.svg-inline--fa.fa-grin-beam:hover {
+  color: #ff0;
+}
+
+aside.emoji-picker-react {
+  position: absolute;
+  bottom: 10vh;
+  width: 100%;
+}
+
+.emoji-picker-react .emoji-categories {
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/**************Emoji End  *******************/
 
 form button {
   background-color: #008F11;
@@ -364,11 +394,17 @@ form button {
   color: white;
   width: 20%;
   min-width: 65px;
+  font-size: 1.4rem;
+}
+
+.svg-inline--fa.fa-paper-plane {
+  height: 100%;
 }
 
 form button:hover {
-  color: #003B00;
   background-color: #E6DDEE;
+  color: #003B00;
+  font-size: 1.8rem;
 }
 
 footer {
@@ -394,5 +430,19 @@ footer {
   }
   .instructionPara {
     font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 350px) {
+  form {
+    flex-direction: column;
+  }
+  form button,
+  .inputAndEmoji {
+    width: 100%;
+    height: 50%;
+  }
+  .inputAndEmoji .svg-inline--fa.fa-w-16 {
+    height: 100%;
   }
 }

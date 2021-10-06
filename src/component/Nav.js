@@ -8,7 +8,7 @@ const Nav = () => {
 
     
     return(
-        <nav>
+        <nav className="navigation">
             <p>Welcome, {auth.currentUser.displayName}</p>
             <ul>
                 <li onClick={ signingOut }>
