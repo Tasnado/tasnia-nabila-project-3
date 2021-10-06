@@ -191,7 +191,7 @@ header, main {
 
 main {
   background: rgb(13,2,8);
-  background: radial-gradient(circle, rgba(13,2,8,1) 68%, rgb(1, 27, 1) 100%); 
+  background: radial-gradient(circle, rgba(13,2,8,1) 47%, rgba(8,85,8,1) 87%); 
   height: 96.5vh;
 }
 

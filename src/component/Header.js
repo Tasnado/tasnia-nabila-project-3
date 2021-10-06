@@ -1,6 +1,6 @@
 import backgroundVideo from '../assets/backgroundVideo.mp4'
 import { useState } from 'react';
-import { getAuth, onAuthStateChanged, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import redButtonSound from '../audio/redButtonSound.wav';
 import blueButtonSound from '../audio/blueButtonSound.wav';
 
@@ -11,24 +11,16 @@ const Header = () => {
     const [heading, setHeading] = useState("Welcome, stranger.")
     const [instruction, setInstruction] = useState("It seems you found our secret chat room. There is no turning back. You click the blue button, the story ends. You click the red button, you open yourself to a world of new people.")
 
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-            setSignedIn(true)
-        } else {
-            setSignedIn(false)
-        }
-    });
-
     const signInWithGoogle = () => {
+        buttonSoundClick(redButtonSound);
         const provider = new GoogleAuthProvider();
         signInWithPopup(auth, provider)
-            .then((result) => {
-                console.log(result);
-                buttonSoundClick(redButtonSound);
+            .then(() => {
+                setSignedIn(true);
             }).catch((error) => {
-                console.log(error);
+                console.log(error)
             })
-    }
+        }
 
     const clickedBlueButton = () => {
         setBluePill(true);
@@ -41,7 +33,6 @@ const Header = () => {
         const audio = new Audio(url);
         audio.play();
     }
-
 
     return (
         <header className={bluePill ? "blueButtonClicked" : null}>
