@@ -6,7 +6,7 @@ const Nav = () => {
         signOut(auth)
     }
 
-    
+    // gives user the option to log out and displays their name in the header
     return(
         <nav className="navigation">
             <p>Welcome, {auth.currentUser.displayName}</p>

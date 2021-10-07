@@ -9,6 +9,7 @@ function App() {
   const auth = getAuth();
   const [signedIn, setSignedIn] = useState(false);
 
+  // checks if the user is signed in
   onAuthStateChanged(auth, (user) => {
     if (user) {
       setSignedIn(true)
@@ -21,6 +22,7 @@ function App() {
   return (
     <div className="App">
 
+      {/* If user is not signed in, header (to sign in) is displayed. Otherwise, sent to the chatroom */}
       {!signedIn ?
         <Header /> :
         <main>

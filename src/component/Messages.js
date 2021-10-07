@@ -12,6 +12,8 @@ const Messages = () => {
     const auth = getAuth();
     const { uid } = auth.currentUser;
 
+    // displays the messages stored in firebase
+        // only when changes in the database occur
     useEffect(() => {
         const dbRef = ref(realtime);
 
@@ -32,6 +34,7 @@ const Messages = () => {
         });
     }, []);
 
+    // scrolls to the span element each time new message is added to automatically scroll to lates message
     useEffect(() => {
         scrollTo.current.scrollIntoView({ behavior: 'smooth' });
     }, [messages]);

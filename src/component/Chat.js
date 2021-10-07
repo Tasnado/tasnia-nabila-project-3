@@ -16,10 +16,7 @@ const Chat = () => {
     const [chosenEmoji, setChosenEmoji] = useState(null);
     const [emojiHover, setEmojiHover] = useState(faSmile)
 
-    const handleChange = (event) => {
-        setUserInput(event.target.value);
-    }
-
+    // on submit, gets the user input and pushes them into firebase
     const handleSubmit = (event) => {
         event.preventDefault();
 
@@ -32,14 +29,16 @@ const Chat = () => {
             }
             push(dbRef, userInputObject);
 
+            // takes the userText and sends to the Music component to play sound based on certain user keywords
             const userText = userInput.toLowerCase()
-            
             Music(userText);
         }
         setUserInput("");
     }
 
+    // function to add emojis to the userText
     const onEmojiClick = (event, emojiObject) => {
+        // adds the emoji with the text or by itself
         setUserInput(prevInput => prevInput + emojiObject.emoji);
         setChosenEmoji(null);
     }
@@ -55,16 +54,20 @@ const Chat = () => {
                         className="userInput"
                         value={ userInput }
                         placeholder="Say something nice"
-                        onChange={ handleChange }
+                        onChange={ (e) => setUserInput(e.target.value) }
                     />
+                    {/* to display font awesome icons */}
                     <FontAwesomeIcon 
                         icon={emojiHover} 
                         onClick={ () => setChosenEmoji(val => !val) }
+                        // mimics the hover effect
                         onMouseEnter={ () => setEmojiHover(faGrinBeam) }
                         onMouseLeave={ () => setEmojiHover(faSmile) }
                     />
+                    {/* calls the emoji picker package */}
                     { chosenEmoji && <Picker
                         onEmojiClick={onEmojiClick} 
+                        // to style it to prevent default inline-styling on the emojipicker container
                         pickerStyle={
                             {position: 'absolute', 
                             bottom: '10vh', 

@@ -10,6 +10,7 @@ const Music = (userText) => {
         audio.play();
     }
 
+    // play different sounds based on certain user keywords
     if (userText.includes("juno")) {
         playSound(happyBellsBotification);
     } else if (userText.includes("cohort 36") || userText.includes("cohort36")) {
