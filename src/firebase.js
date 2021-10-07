@@ -5,13 +5,12 @@ import { getDatabase } from "firebase/database";
 // Initialize Firebase
 // *** USE YOUR CONFIG OBJECT ***
 const firebaseConfig = {
-    apiKey: "AIzaSyC0URqrXuuJq3xxPlgHbAfLbtWLfkCd9oc",
-    authDomain: "project-3-733ea.firebaseapp.com",
-    databaseURL: "https://project-3-733ea-default-rtdb.firebaseio.com",
-    projectId: "project-3-733ea",
-    storageBucket: "project-3-733ea.appspot.com",
-    messagingSenderId: "851225147569",
-    appId: "1:851225147569:web:0a86fc471fbeec543d0a90"
+    apiKey: "AIzaSyDYj1NOzK-WTrGc77ovTR763J7Njaq7U5k",
+    authDomain: "project3roomtest.firebaseapp.com",
+    projectId: "project3roomtest",
+    storageBucket: "project3roomtest.appspot.com",
+    messagingSenderId: "383731751876",
+    appId: "1:383731751876:web:6d6a8d044c6f1ad2b26291"
 };
 
 // this exports the CONFIGURED version of firebase

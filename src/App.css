@@ -179,10 +179,39 @@ header p {
 .headerButtons .blueButton:hover {
   background-color: rgb(5, 5, 128);
 }
+/***********************************************************************/
+/* Chat Room */
+/***********************************************************************/
+.rooms {
+  background-color: #ff0;
+  height: 85vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding-top: 20px;
+}
+
+.individualChatRoom {
+  background-color: green;
+  width: 200px;
+  height: 150px;
+}
+
+.chatRoomAddForm {
+  background-color: green;
+  height: 85vh;
+}
+
+.chatRoomAddForm form {
+  display: flex;
+  flex-direction: column;
+  padding: 10%;
+  text-align: left;
+}
 
 
 /***********************************************************************/
-/* Messages */
+/* Chat */
 /***********************************************************************/
 
 header, main {
@@ -208,7 +237,7 @@ main .wrapper {
   padding-left: 20px;
 }
 
-.navigation p {
+.navigation h2 {
   font-size: 1.2rem;
 }
 
