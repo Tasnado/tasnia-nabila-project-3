@@ -131,7 +131,7 @@ header .wrapper {
 
 .headerButtons {
   -webkit-animation: 8s ease 0s normal forwards 1 fadein;
-  animation: 8s ease 0s normal forwards 1 fadein;
+  animation: 6s ease 0s normal forwards 1 fadein;
 }
 
 .notFoundError {
@@ -156,7 +156,8 @@ header p {
   border-radius: 45%;
 }
 
-.headerButtons button:hover {
+.headerButtons button:hover,
+.headerButtons button:focus {
   box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 }
 
@@ -166,7 +167,8 @@ header p {
   box-shadow: rgba(129, 6, 6, 0.3) 0px 19px 38px, rgba(129, 6, 6, 0.22) 0px 15px 12px;
 }
 
-.headerButtons .redButton:hover {
+.headerButtons .redButton:hover
+.headerButtons .redButton:focus {
   background-color: rgb(129, 6, 6);
 }
 
@@ -176,7 +178,8 @@ header p {
   box-shadow: rgba(5, 5, 128, 0.3) 0px 19px 38px, rgba(5, 5, 128, 0.22) 0px 15px 12px;
 }
 
-.headerButtons .blueButton:hover {
+.headerButtons .blueButton:hover,
+.headerButtons .blueButton:focus {
   background-color: rgb(5, 5, 128);
 }
 
@@ -226,7 +229,8 @@ main .wrapper {
   cursor: pointer;
 }
 
-.navigation li:hover {
+.navigation li:hover,
+.navigation li:focus {
   background: #E6DDEE;
   color: #003B00;
 }
@@ -371,15 +375,10 @@ form button {
   width: 30px;
   cursor: pointer;
 }
-.svg-inline--fa.fa-grin-beam:hover {
+.svg-inline--fa.fa-grin-beam:hover,
+.svg-inline--fa.fa-grin-beam:focus {
   color: #ff0;
 }
-
-/* aside.emoji-picker-react {
-  position: absolute;
-  bottom: 10vh;
-  width: 100%;
-} */
 
 .emoji-picker-react .emoji-categories {
   flex-wrap: wrap;
@@ -401,7 +400,8 @@ form button {
   height: 100%;
 }
 
-form button:hover {
+form button:hover,
+form button:focus {
   background-color: #E6DDEE;
   color: #003B00;
   font-size: 1.8rem;
